@@ -26,13 +26,22 @@ app.use("/api/v1/parcels", parcelRoute);
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(process.env.DB)
+  .connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("DB connection is successfull");
+    console.log("DB connection is successful");
   })
   .catch((e) => {
-    console.log(e);
-  });
+    console.log("DB connection error:", e);
+  });
+
+// mongoose
+//   .connect(process.env.DB)
+//   .then(() => {
+//     console.log("DB connection is successfull");
+//   })
+//   .catch((e) => {
+//     console.log(e);
+//   });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
