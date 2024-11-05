@@ -7,7 +7,7 @@
     }
   ],
   "env": {
-    "DB": "@your_database_url",
+    "DB": "@DB",
     "PORT": "8000"
   }
 }
