@@ -11,13 +11,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root route to handle GET requests to "/"
+app.get("/", (req, res) => {
+  res.send("Welcome to the Parcel Delivery API"); // Response for root URL
+});
+
+
 // ROUTES
 
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/parcels", parcelRoute);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(process.env.DB)

@@ -1,20 +1,29 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "index.js",
-            "use": "@vercel/node",
-            "config": {
-                "includeFiles": [
-                    "dist/**"
-                ]
-            }
+      {
+        "src": "Backend/index.js",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": [
+            "Backend/routes/",
+            "Backend/models/",
+            "Backend/helpers/",
+            "Backend/EmailService/",
+            "Backend/templates/",
+            "Backend/.env"
+          ]
         }
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "index.js"
-        }
-    ]
-}
+      {
+        "src": "/api/v1/(.*)",
+        "dest": "Backend/index.js"
+      }
+    ],
+    "env": {
+      "DB": "@your_database_url",
+      "PORT": "5000"  
+    }
+  }
