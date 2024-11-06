@@ -43,7 +43,9 @@ const NewUsers = () => {
     try {
       const password = generatePassword(12);
 
-      await publicRequest.post("/auth/register", { ...inputs, password });
+      // await publicRequest.post("/auth/register", { ...inputs, password });
+      await publicRequest.post("/api/v1/auth/register", { ...inputs, password });
+
 
       // Clear the input fields
       setInputs({});
