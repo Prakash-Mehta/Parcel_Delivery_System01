@@ -5,9 +5,7 @@
       "src": "/api/(.*)",
       "dest": "Backend/index.js"
     }
-  ],
-  "env": {
-    "DB": "@DB"
   
-  }
+  
+  ]
 }
