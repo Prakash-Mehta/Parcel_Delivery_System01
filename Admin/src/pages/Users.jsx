@@ -34,7 +34,7 @@ const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await publicRequest.get("/users");
+        const res = await publicRequest.get("/user");
         
         // Debugging: Check the structure of res.data
         console.log(res.data);
@@ -55,7 +55,7 @@ const Users = () => {
 
   const handleDelete = async (id) => {
     try {
-      await publicRequest.delete(`/users/${id}`);
+      await publicRequest.delete(`/user/${id}`);
       window.location.reload();
     } catch (error) {
       console.log(error);
