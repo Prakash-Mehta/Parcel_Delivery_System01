@@ -42,7 +42,7 @@ connectDB();
 
 // The app.listen() part is not needed when deploying to Vercel because Vercel uses serverless functions,
 // but if you're running it locally, you can use it.
-// const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
    console.log(`Server is running on port ${PORT}`);
  });
