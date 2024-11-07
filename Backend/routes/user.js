@@ -40,23 +40,14 @@ router.delete("/:id", async (req, res) => {
   });
 
   //GET ALL USERS
-
-  router.get('/api/v1/users', async (req, res) => {
+  
+  router.get("/", async (req, res) => {
     try {
-      const users = await User.find().sort({ createdAt: -1 }); // Or wherever your users are stored
+      const users = await User.find().sort({ createdAt: -1 });
       res.status(200).json(users);
     } catch (error) {
-      res.status(500).json({ message: "Error fetching users" });
+      res.status(500).json(error);
     }
   });
-  
-//   router.get("/", async (req, res) => {
-//     try {
-//       const users = await User.find().sort({ createdAt: -1 });
-//       res.status(200).json(users);
-//     } catch (error) {
-//       res.status(500).json(error);
-//     }
-//   });
 
 // module.exports = router;
