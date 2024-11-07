@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
   origin: 'https://parcel-delivery-system01frontend.vercel.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  // allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Parse JSON bodies
