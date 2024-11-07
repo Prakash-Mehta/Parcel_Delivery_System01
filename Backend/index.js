@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
-const userRouter = require("./routes/user");
+// const userRouter = require("./routes/user");
+const userRoutes = require("./routes/user");
 const parcelRouter = require("./routes/parcels");
 
 // Load environment variables
@@ -33,7 +34,8 @@ app.get("/health", (req, res) => {
 
 // Use routes for API endpoints
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/user", userRouter);
+// app.use("/api/v1/user", userRouter);
+app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/parcels", parcelRouter);
 
 // MongoDB connection
