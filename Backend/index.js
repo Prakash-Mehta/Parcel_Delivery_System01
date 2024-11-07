@@ -14,7 +14,8 @@ const app = express();
 
 // Enable CORS with specific domain for production (adjust for local as needed)
 app.use(cors({
-  origin: 'https://parcel-delivery-system01frontend.vercel.app', // Replace with your frontend URL
+  // origin: 'https://parcel-delivery-system01frontend.vercel.app', // Replace with your frontend URL
+  origin: ["https://parcel-delivery-system01frontend.vercel.app", "https://parcel-delivery-system01admin.vercel.app"],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
