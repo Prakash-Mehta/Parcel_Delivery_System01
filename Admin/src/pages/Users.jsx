@@ -34,7 +34,9 @@ const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await publicRequest.get("/user");
+         //const res = await publicRequest.get("/user");
+         const res = await publicRequest.get("/users");
+        
         
         // Debugging: Check the structure of res.data
         console.log(res.data);

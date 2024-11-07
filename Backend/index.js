@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const cors = require("cors");
+// const cors = require("cors");
+const cors = require('cors');
 const authRoutes = require("./routes/auth");
-const userRouter = require("./routes/user");
+// const userRouter = require("./routes/user");
+const userRoutes = require("./routes/userRoutes");
 const parcelRouter = require("./routes/parcels");
 
 // Load environment variables
@@ -15,7 +17,7 @@ const app = express();
 app.use(cors({
   origin: 'https://parcel-delivery-system01frontend.vercel.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  // allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Parse JSON bodies
@@ -33,7 +35,8 @@ app.get("/health", (req, res) => {
 
 // Use routes for API endpoints
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/user", userRouter);
+// app.use("/api/v1/user", userRouter);
+app.use("/api/v1", userRoutes);
 app.use("/api/v1/parcels", parcelRouter);
 
 // MongoDB connection

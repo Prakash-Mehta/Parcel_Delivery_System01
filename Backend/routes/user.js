@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+//const User = require("../models/User");
+const User = require("../models/user");
 
 
 // POST - CREATE USER added
@@ -40,13 +41,22 @@ router.delete("/:id", async (req, res) => {
 
   //GET ALL USERS
 
-  router.get("/", async (req, res) => {
+  router.get('/api/v1/users', async (req, res) => {
     try {
-      const users = await User.find().sort({ createdAt: -1 });
+      const users = await User.find().sort({ createdAt: -1 }); // Or wherever your users are stored
       res.status(200).json(users);
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({ message: "Error fetching users" });
     }
   });
+  
+//   router.get("/", async (req, res) => {
+//     try {
+//       const users = await User.find().sort({ createdAt: -1 });
+//       res.status(200).json(users);
+//     } catch (error) {
+//       res.status(500).json(error);
+//     }
+//   });
 
-module.exports = router;
+// module.exports = router;
