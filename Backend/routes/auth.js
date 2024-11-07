@@ -8,8 +8,8 @@ dotenv.config();
 
 //REGISTER
 
-router.post("/api/v1/auth/register", async (req, res) => {
-  const newUser = User({
+router.post("/register", async (req, res) => {
+  const newUser = new User({
     fullname: req.body.fullname,
     email: req.body.email,
     age: req.body.age,

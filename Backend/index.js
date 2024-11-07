@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const authRouter = require("./routes/auth");
+const authRoutes = require("./routes/auth");
 const userRouter = require("./routes/user");
 const parcelRouter = require("./routes/parcels");
 
@@ -32,7 +32,7 @@ app.get("/health", (req, res) => {
 });
 
 // Use routes for API endpoints
-app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/parcels", parcelRouter);
 
