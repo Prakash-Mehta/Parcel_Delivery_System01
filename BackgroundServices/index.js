@@ -65,7 +65,7 @@
 
 const express = require("express");
 const cron = require("node-cron");
-const app = express();
+//const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const { SendParcelDeliveredEmail } = require("./EmailService/DeliveredParcel");
@@ -73,6 +73,7 @@ const { SendParcelPendingEmail } = require("./EmailService/PendingParcel");
 const { sendWelcomeEmail } = require("./EmailService/WelcomeEmail");
 
 dotenv.config();
+const app = express();
 
 mongoose
   .connect(process.env.DB)
@@ -81,6 +82,10 @@ mongoose
   })
   .catch((e) => {
     console.log(e);
+  });
+
+  app.get("/", (req, res) => {
+    res.send("Background Services are running");
   });
 
 const run = () => {
