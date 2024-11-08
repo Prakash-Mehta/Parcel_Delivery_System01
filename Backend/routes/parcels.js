@@ -5,19 +5,8 @@ const Parcel = require("../models/Parcel");
 // ADD PARCEL
 
 // ADD PARCEL
-router.post("/", async (req, res) => {
-  console.log("Parcel data received:", req.body);  // Log data for debugging
-  const newParcel = Parcel(req.body);
-  try {
-    const parcel = await newParcel.save();
-    res.status(201).json(parcel);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-
 // router.post("/", async (req, res) => {
+//   console.log("Parcel data received:", req.body);  // Log data for debugging
 //   const newParcel = Parcel(req.body);
 //   try {
 //     const parcel = await newParcel.save();
@@ -26,6 +15,17 @@ router.post("/", async (req, res) => {
 //     res.status(500).json(error);
 //   }
 // });
+
+
+router.post("/", async (req, res) => {
+  const newParcel = Parcel(req.body);
+  try {
+    const parcel = await newParcel.save();
+    res.status(201).json(parcel);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 //GET ALL PARCELS
 
@@ -40,41 +40,41 @@ router.get("/", async (req, res) => {
 
 // UPDATE PARCEL
 // UPDATE PARCEL
-router.put("/:id", async (req, res) => {
-  try {
-    console.log("Updating parcel with ID:", req.params.id, "and data:", req.body);
-    const updatedParcel = await Parcel.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true }
-    );
-
-    if (!updatedParcel) {
-      console.log("Parcel not found for ID:", req.params.id);
-      return res.status(404).json({ message: "Parcel not found" });
-    }
-
-    console.log("Updated parcel:", updatedParcel); // <-- Log updated parcel
-    res.status(200).json(updatedParcel); // Use 200 for successful updates
-  } catch (error) {
-    console.error("Error updating parcel:", error); // Log the error for debugging
-    res.status(500).json(error);
-  }
-});
-
-
 // router.put("/:id", async (req, res) => {
 //   try {
-//     const parcel = await Parcel.findByIdAndUpdate(
+//     console.log("Updating parcel with ID:", req.params.id, "and data:", req.body);
+//     const updatedParcel = await Parcel.findByIdAndUpdate(
 //       req.params.id,
 //       { $set: req.body },
 //       { new: true }
 //     );
-//     res.status(201).json(parcel);
+
+//     if (!updatedParcel) {
+//       console.log("Parcel not found for ID:", req.params.id);
+//       return res.status(404).json({ message: "Parcel not found" });
+//     }
+
+//     console.log("Updated parcel:", updatedParcel); // <-- Log updated parcel
+//     res.status(200).json(updatedParcel); // Use 200 for successful updates
 //   } catch (error) {
+//     console.error("Error updating parcel:", error); // Log the error for debugging
 //     res.status(500).json(error);
 //   }
 // });
+
+
+router.put("/:id", async (req, res) => {
+  try {
+    const parcel = await Parcel.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(201).json(parcel);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 // GET ONE PARCEL
 
