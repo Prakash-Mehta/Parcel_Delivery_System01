@@ -68,43 +68,42 @@
 // });
 
 
-//one more added
+// ADDED NEWEST
+
 
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-
-const authRouter = require("./routes/auth");
-const userRouter = require("./routes/user");
-const parcelRouter = require("./routes/parcels");
+const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
+const parcelRoute = require("./routes/parcels");
 
 dotenv.config();
-
 const app = express();
 
-// CORS configuration for specific origins
+
+//CORS configuration for specific origins
 const corsOptions = {
   origin: ['https://parcel-delivery-system01admin.vercel.app' , 'https://parcel-delivery-system01frontend.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 app.use(cors(corsOptions));
-
-// Parse JSON bodies
+//app.use(cors());
 app.use(express.json());
 
-// Root route
 app.get("/", (req, res) => {
   res.send("Welcome to the Parcel Delivery API");
 });
 
-// API Routes
-app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/parcels", parcelRouter);
+// ROUTES
 
-// MongoDB connection
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/users", userRoute);
+app.use("/api/v1/parcels", parcelRoute);
+
+//MongoDB connection
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -118,11 +117,68 @@ const connectDB = async () => {
 connectDB();
 
 // Optional local server setup
-// if (process.env.NODE_ENV !== 'production') {
+ //if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
+
+
+
+
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const dotenv = require("dotenv");
+// const cors = require("cors");
+
+// const authRouter = require("./routes/auth");
+// const userRouter = require("./routes/user");
+// const parcelRouter = require("./routes/parcels");
+
+// dotenv.config();
+
+// const app = express();
+
+//  CORS configuration for specific origins
+// const corsOptions = {
+//   origin: ['https://parcel-delivery-system01admin.vercel.app' , 'https://parcel-delivery-system01frontend.vercel.app'],
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
+
+// // Parse JSON bodies
+// app.use(express.json());
+
+// // Root route
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the Parcel Delivery API");
+// });
+
+// // API Routes
+// app.use("/api/v1/auth", authRouter);
+// app.use("/api/v1/user", userRouter);
+// app.use("/api/v1/parcels", parcelRouter);
+
+//  MongoDB connection
+// const connectDB = async () => {
+//   try {
+//     await mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true });
+//     console.log("DB connection is successful");
+//   } catch (e) {
+//     console.error("DB connection error:", e);
+//   }
+// };
+
+// // Connect to the database
+// connectDB();
+
+//  Optional local server setup
+//  if (process.env.NODE_ENV !== 'production') {
+//   const PORT = process.env.PORT || 5000;
+//   app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+//   });
 
 
 
