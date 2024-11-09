@@ -161,14 +161,24 @@ const Parcels = () => {
     getParcels();
   }, []);
 
-const handleDelete = async(id) =>{
-  try {
+
+  const handleDelete = async (id) => {
+    try {
       await publicRequest.delete(`/parcels/${id}`);
-      window.location.reload();
-  } catch (error) {
-    console.log(error);
-  }
-}
+      setParcels((prevParcels) => prevParcels.filter(parcel => parcel._id !== id)); // Directly update state
+    } catch (error) {
+      console.log(error);
+      // Optionally, you can set an error message in the state to display to the user
+    } }
+
+// const handleDelete = async(id) =>{
+//   try {
+//       await publicRequest.delete(`/parcels/${id}`);
+//       window.location.reload();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
   return (
     <div className="m-[30px] bg-[#fff] p-[20px]">

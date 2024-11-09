@@ -143,14 +143,24 @@ const Users = () => {
     getUsers();
   }, []);
 
+
   const handleDelete = async (id) => {
     try {
       await publicRequest.delete(`/users/${id}`);
-      window.location.reload();
+      setUsers((prevUsers) => prevUsers.filter(user => user._id !== id)); // Update the state without reloading
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await publicRequest.delete(`/users/${id}`);
+  //     window.location.reload();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="m-[30px] bg-[#fff] p-[20px]">

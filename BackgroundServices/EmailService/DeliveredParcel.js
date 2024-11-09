@@ -79,6 +79,11 @@ const SendParcelDeliveredEmail = async () => {
           note: parcel.note,
         },
         async (err, data) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+
           let messageoption = {
             from: process.env.EMAIL,
             to: parcel.senderemail,
@@ -87,10 +92,9 @@ const SendParcelDeliveredEmail = async () => {
           };
 
           try {
-            sendMail(messageoption);
-           
+            await sendMail(messageoption);
           } catch (error) {
-            console.log(err);
+            console.log(error);
           }
         }
       );
@@ -107,6 +111,11 @@ const SendParcelDeliveredEmail = async () => {
           note: parcel.note,
         },
         async (err, data) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+
           let messageoption = {
             from: process.env.EMAIL,
             to: parcel.recipientemail,
@@ -115,10 +124,11 @@ const SendParcelDeliveredEmail = async () => {
           };
 
           try {
-            sendMail(messageoption);
-            await Parcel.findByIdAndUpdate(parcel._id, { $set: { status: 3} });
+            await sendMail(messageoption);
+            // Update the parcel status after sending the email
+            await Parcel.findByIdAndUpdate(parcel._id, { status: 3 });
           } catch (error) {
-            console.log(err);
+            console.log(error);
           }
         }
       );
@@ -126,7 +136,82 @@ const SendParcelDeliveredEmail = async () => {
   }
 };
 
-module.exports = {SendParcelDeliveredEmail };
+module.exports = { SendParcelDeliveredEmail };
+
+
+
+
+// const ejs = require("ejs");
+// const dotenv = require("dotenv");
+// const sendMail = require("../helpers/sendMail");
+// const Parcel = require("../models/Parcel");
+// dotenv.config();
+
+// const SendParcelDeliveredEmail = async () => {
+//   const parcels = await Parcel.find({ status: 2 });
+
+//   if (parcels.length > 0) {
+//     for (let parcel of parcels) {
+//       ejs.renderFile(
+//         "templates/deliveredparcel.ejs",
+//         {
+//           sendername: parcel.sendername,
+//           from: parcel.from,
+//           to: parcel.to,
+//           recipientname: parcel.recipientname,
+//           cost: parcel.cost,
+//           weight: parcel.weight,
+//           note: parcel.note,
+//         },
+//         async (err, data) => {
+//           let messageoption = {
+//             from: process.env.EMAIL,
+//             to: parcel.senderemail,
+//             subject: "Your parcel has been delivered",
+//             html: data,
+//           };
+
+//           try {
+//             sendMail(messageoption);
+           
+//           } catch (error) {
+//             console.log(err);
+//           }
+//         }
+//       );
+
+//       ejs.renderFile(
+//         "templates/deliveredparcel.ejs",
+//         {
+//           sendername: parcel.sendername,
+//           from: parcel.from,
+//           to: parcel.to,
+//           recipientname: parcel.recipientname,
+//           cost: parcel.cost,
+//           weight: parcel.weight,
+//           note: parcel.note,
+//         },
+//         async (err, data) => {
+//           let messageoption = {
+//             from: process.env.EMAIL,
+//             to: parcel.recipientemail,
+//             subject: "Your parcel has been delivered",
+//             html: data,
+//           };
+
+//           try {
+//             sendMail(messageoption);
+//             await Parcel.findByIdAndUpdate(parcel._id, { $set: { status: 3} });
+//           } catch (error) {
+//             console.log(err);
+//           }
+//         }
+//       );
+//     }
+//   }
+// };
+
+// module.exports = {SendParcelDeliveredEmail };
 
 
 
