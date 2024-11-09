@@ -166,21 +166,38 @@ const Parcel = () => {
     getParcel();
   }, [parcelId]);
 
-  const handleUpdate = async () => {
-    try {
-      if (inputs) {
-        await publicRequest.put(`/parcels/${parcel._id}`, inputs);
-        window.location.reload();
-      } else {
-        await publicRequest.put(`/parcels/${parcel._id}`, {
-          status: 2,
-        });
-        window.location.reload();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
+  // In your frontend handleUpdateStatus function:
+const handleUpdateStatus = async (id) => {
+  try {
+    await publicRequest.put(`/parcels/update/${id}`, { status: "Delivered" });
+    // Update the state to reflect the new status
+    setParcels((prevParcels) => 
+      prevParcels.map((parcel) =>
+        parcel._id === id ? { ...parcel, status: "Delivered" } : parcel
+      )
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+  // const handleUpdate = async () => {
+  //   try {
+  //     if (inputs) {
+  //       await publicRequest.put(`/parcels/${parcel._id}`, inputs);
+  //       window.location.reload();
+  //     } else {
+  //       await publicRequest.put(`/parcels/${parcel._id}`, {
+  //         status: 2,
+  //       });
+  //       window.location.reload();
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="m-[30px] bg-[#fff] p-[20px]">

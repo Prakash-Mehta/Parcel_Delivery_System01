@@ -2,6 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Parcel = require("../models/Parcel");
 
+// added  below 2 line
+const { updateParcelStatus } = require('../controllers/parcelController');
+
+// Assuming the parcel ID is passed as a URL parameter
+router.put('/update/:id', updateParcelStatus);
+
+
 // ADD PARCEL
 
 router.post("/", async (req, res) => {
