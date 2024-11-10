@@ -8,23 +8,23 @@ import { Link } from "react-router-dom";
 const Menu = () => {
   return (
     <div className="h-[90vh] shadow-xl">
-      <ul className="flex flex-col items-center justify-between h-full mt-[20px]">
+      <ul className="flex flex-col items-center justify-between h-full mt-[20px] space-y-[20px]">
         <Link to="/">
-          <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer mt-[20px]">
+          <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer">
             <FaHome className="mr-[15px]" />
             Home
           </li>
         </Link>
 
         <Link to="/parcels">
-          <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer mt-[20px]">
+          <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer">
             <FaBox className="mr-[15px]" />
             Parcels
           </li>
         </Link>
 
         <Link to="/users">
-          <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer mt-[20px]">
+          <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer">
             <FaUsers className="mr-[15px]" />
             Users
           </li>
@@ -35,6 +35,7 @@ const Menu = () => {
 };
 
 export default Menu;
+
 
 
 
