@@ -16,27 +16,27 @@ let configurations = {
   },
 };
 
-const sendMail = async (messageoption) => {
-  try {
-    const transporter = await createTransporter(configurations);
-    await transporter.verify();
-    const info = await transporter.sendMail(messageoption);
-    console.log(info.response);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-
 // const sendMail = async (messageoption) => {
-//   const transporter = await createTransporter(configurations);
-//   await transporter.verify();
-//   await transporter.sendMail(messageoption, (error, info) => {
-//     if (error) {
-//       console.log(error);
-//     }
+//   try {
+//     const transporter = await createTransporter(configurations);
+//     await transporter.verify();
+//     const info = await transporter.sendMail(messageoption);
 //     console.log(info.response);
-//   });
+//   } catch (error) {
+//     console.log(error);
+//   }
 // };
+
+
+const sendMail = async (messageoption) => {
+  const transporter = await createTransporter(configurations);
+  await transporter.verify();
+  await transporter.sendMail(messageoption, (error, info) => {
+    if (error) {
+      console.log(error);
+    }
+    console.log(info.response);
+  });
+};
 
 module.exports=sendMail;
