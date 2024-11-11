@@ -3,8 +3,8 @@ const Home = () => {
     <div className="flex items-center justify-center h-full">
       <div className="flex items-center justify-center w-[950px] h-[500px] bg-gray-200 shadow-lg m-[20px]">
         <img
-          src="parcel.jpg"
-          alt="parcel"
+          src="parcel1.jpg"
+          alt="parcel1"
           className="w-[950px] h-[500px]" // You can change the width to whatever you want here
         />
       </div>
