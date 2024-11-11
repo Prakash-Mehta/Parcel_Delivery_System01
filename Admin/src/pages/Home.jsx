@@ -5,7 +5,7 @@ const Home = () => {
         <img
           src="Delivery_worker_on_bike.jpg"
           alt="Delivery worker on bike"
-          className="max-w-full h-auto"
+          className="w-[500px]" // You can change the width to whatever you want here
         />
       </div>
     </div>
@@ -13,9 +13,6 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
 
 
 
