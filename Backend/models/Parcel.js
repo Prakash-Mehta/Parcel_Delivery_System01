@@ -12,7 +12,7 @@ const ParcelSchema = mongoose.Schema(
     date: { type: String},
     note: { type: String},
     feedback: { type: String},
-    status: { type: Number, default:0},
+    status: { type: Number, default:1},
   },
   { timestamps: true }
 );
