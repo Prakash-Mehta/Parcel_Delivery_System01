@@ -3,7 +3,7 @@ const Home = () => {
     <div className="flex items-center justify-center h-full">
       <div className="flex items-center justify-center w-[500px] h-[400px] bg-gray-200 shadow-lg m-[20px]">
         <img
-          src="/images/Delivery_worker_on_bike.jpg"
+          src="Delivery_worker_on_bike.jpg"
           alt="Delivery worker on bike"
           style={{ display: "block", margin: "0 auto", width: "300px" }}
         />
