@@ -1,11 +1,11 @@
 const Home = () => {
   return (
     <div className="flex items-center justify-center h-full">
-      <div className="flex items-center justify-center w-[700px] h-[500px] bg-gray-200 shadow-lg m-[20px]">
+      <div className="flex items-center justify-center w-[950px] h-[500px] bg-gray-200 shadow-lg m-[20px]">
         <img
           src="Delivery_worker_on_bike.jpg"
           alt="Delivery worker on bike"
-          style={{ display: "block", margin: "0 auto", width: "300px" }}
+          className="max-w-full h-auto"
         />
       </div>
     </div>
