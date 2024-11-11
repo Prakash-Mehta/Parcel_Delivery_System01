@@ -5,7 +5,7 @@ const Home = () => {
         <img
           src="Delivery_worker_on_bike.jpg"
           alt="Delivery worker on bike"
-          className="w-[500px]" // You can change the width to whatever you want here
+          className="w-[950px] h-[500px]" // You can change the width to whatever you want here
         />
       </div>
     </div>
