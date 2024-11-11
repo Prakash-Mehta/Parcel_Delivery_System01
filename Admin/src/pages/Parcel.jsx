@@ -322,8 +322,6 @@
 
 
 
-
-
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
 import { useEffect, useState } from "react";
@@ -354,15 +352,14 @@ const Parcel = () => {
 
   const handleUpdate = async () => {
     try {
-      if (inputs) {
+      if (inputs && Object.keys(inputs).length > 0) {
+        // If there are any inputs, update the parcel data with those inputs
         await publicRequest.put(`/parcels/${parcel._id}`, inputs);
-        window.location.reload();
       } else {
-        await publicRequest.put(`/parcels/${parcel._id}`, {
-          status: 2,
-        });
-        window.location.reload();
+        // If no specific inputs are given, update the status to 2
+        await publicRequest.put(`/parcels/${parcel._id}`, { status: 2 });
       }
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -374,7 +371,6 @@ const Parcel = () => {
 
       <div className="flex">
         <div className="m-[20px]">
-          {/* Input fields */}
           <div className="flex flex-col my-[20px]">
             <label htmlFor="">From</label>
             <input
@@ -386,8 +382,109 @@ const Parcel = () => {
               className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
             />
           </div>
-          {/* Additional input fields follow the same pattern */}
-          {/* Update Button */}
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">To</label>
+            <input
+              type="text"
+              placeholder={parcel.to}
+              name="to"
+              value={inputs.to || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Sender Name</label>
+            <input
+              type="text"
+              placeholder={parcel.sendername}
+              name="sendername"
+              value={inputs.sendername || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Recipient Name</label>
+            <input
+              type="text"
+              placeholder={parcel.recipientname}
+              name="recipientname"
+              value={inputs.recipientname || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Sender Email</label>
+            <input
+              type="email"
+              placeholder={parcel.senderemail}
+              name="senderemail"
+              value={inputs.senderemail || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Recipient Email</label>
+            <input
+              type="email"
+              placeholder={parcel.recipientemail}
+              name="recipientemail"
+              value={inputs.recipientemail || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+        </div>
+
+        <div className="m-[20px]">
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Weight</label>
+            <input
+              type="Number"
+              placeholder={parcel.weight}
+              name="weight"
+              value={inputs.weight || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Cost</label>
+            <input
+              type="Number"
+              placeholder={parcel.cost}
+              name="cost"
+              value={inputs.cost || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Date</label>
+            <input
+              type="date"
+              placeholder="25/06/2024"
+              name="date"
+              value={parcel.date || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+          <div className="flex flex-col my-[20px]">
+            <label htmlFor="">Note</label>
+            <textarea
+              placeholder={parcel.note}
+              type="text"
+              name="note"
+              value={inputs.note || ""}
+              onChange={handleChange}
+              className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
+            />
+          </div>
+
           {parcel.status === 1 && (
             <button
               className="bg-[#1E1E1E] cursor-pointer text-white p-[10px] w-[300px]"
@@ -397,7 +494,7 @@ const Parcel = () => {
             </button>
           )}
         </div>
-        {/* Status and feedback display */}
+
         <div className="flex flex-col">
           <h2 className="font-semibold">Feedback</h2>
           <span>Goods received in good condition.</span>
@@ -411,6 +508,7 @@ const Parcel = () => {
 };
 
 export default Parcel;
+
 
 
 
