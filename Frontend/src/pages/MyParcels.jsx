@@ -177,25 +177,21 @@ const MyParcels = () => {
             onClick={handleOpen}
           >
             <FaUser className="mr-[10px]" />
-            Alok Mondala
+            You
           </span>
         </div>
         {open && (
-          <div className="absolute top-[20px] right-0 h-[200px] w-[250px] bg-[#D9D9D9] z-[999] shadow-xl">
-            <ul className="flex flex-col items-center justify-center mt-[10px]">
-              <Link to="/allparcels">
-                <li className="hover:text-[#fff] my-[5px] cursor-pointer">
-                  All parcels
-                </li>
-              </Link>
-              <li className="hover:text-[#fff] my-[5px] cursor-pointer">
-                Statements
-              </li>
-              <li className="hover:text-[#fff] my-[5px] cursor-pointer" onClick={handleLogout}>
-                Logout
-              </li>
-            </ul>
-          </div>
+         <div className="absolute top-[20px] right-0 h-[150px] w-[250px] bg-[#D9D9D9] z-[999] shadow-xl">
+         <ul className="flex flex-col items-center justify-center mt-[20px] space-y-[20px]">
+           <Link to="/allparcels">
+             <li className="hover:text-[#fff] cursor-pointer">All parcels</li>
+           </Link>
+           <li className="hover:text-[#fff] cursor-pointer" onClick={handleLogout}>
+             Logout
+           </li>
+         </ul>
+       </div>
+       
         )}
       </div>
       <div className="flex justify-evenly px-[5%]">
