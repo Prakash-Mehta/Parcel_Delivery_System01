@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Menu = () => {
   return (
     <div className="h-[90vh] shadow-xl">
-      <ul className="flex flex-col items-start justify-start h-full mt-[20px] space-y-[10px]"> {/* Adjusted space-y to 10px */}
+      <ul className="flex flex-col items-center justify-center h-full mt-[20px] space-y-[20px]"> {/* Increased space and centered items */}
         <Link to="/">
           <li className="flex items-center text-[#D7D7D7] text-[18px] hover:text-[#E9EB77] cursor-pointer">
             <FaHome className="mr-[15px]" />
